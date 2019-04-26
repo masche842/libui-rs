@@ -89,7 +89,12 @@ fn main() {
 }
 ```
 
-## Testing Note
-Travis does not connect video devices to their testing environments, so the tests cannot be run. Therefore, the "tests" only check compilation.
+## Building ui-sys
 
-[libui]: https://github.com/andlabs/libui
+`ui-sys` includes `libui` as a sub-module and allows it to be built on-the-fly with the
+default features `fetch` and `build. With `fetch disabled, it will simply build the
+existing sources without updating them, and with `build` disabled it will build nothing,
+assuming either a system or local (in `./lib/`) version of `libui` is available.
+
+Note that _most of the time_, building `libui` on the fly is what you want. It does however
+require a copy of cmake, essential build tools, et cetera.
